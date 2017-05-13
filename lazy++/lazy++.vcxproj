@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="commandline_wiz.cpp" />
+    <ClCompile Include="lz_array.cpp" />
     <ClCompile Include="lz_vector.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cmdline_wiz.hpp" />
     <ClInclude Include="lazy_core.hpp" />
+    <ClInclude Include="lz_array.hpp" />
     <ClInclude Include="lz_vector.hpp" />
   </ItemGroup>
   <ItemGroup>
