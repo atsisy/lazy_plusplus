@@ -5,9 +5,11 @@
 
 namespace lzy {
 
-	template <class T> class vector : public std::vector<T>, public LZCORE<T> {
+	template <class T> 
+	class vector : public std::vector<T>, public LZCORE<T> {
 
 	public:
+		typedef typename vector<T>::iterator iterator;
 		/*
 		* コンストラクタ
 		*/
@@ -25,7 +27,6 @@ namespace lzy {
 			*オブジェクト生成のみ
 			*/
 		}
-
 
 		void for_each(std::function<void(T &)> function) {
 			unsigned int size = this->size();
@@ -55,6 +56,22 @@ namespace lzy {
 			});
 
 			return _mapping_vector;
+		}
+
+		vector<T> deepCopy() {
+			vector<T> _copy_to_vec;
+			for_each([&](T elem) {
+				_copy_to_vec.push_back(elem);
+			});
+			return _copy_to_vec;
+		}
+
+		vector<T> deepCopy(vector<T>::iterator begin, vector<T>::iterator end) {
+			vector<T> _copy_to_vec;
+			for (vector<T>::iterator _i = begin; _i != end; ++_i) {
+				_copy_to_vec.push_back(*_i);
+			}
+			return _copy_to_vec;
 		}
 	};
 

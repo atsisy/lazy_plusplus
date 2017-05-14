@@ -1,8 +1,16 @@
 #include <iostream>
-#include <chrono>
 #include "lz_vector.hpp"
-#include "cmdline_wiz.hpp"
 #include "p_time.hpp"
+#include <string>
+
+std::function<void(void)> outer() {
+	static int x = 0;
+
+	return [&] { 
+		std::cout << x << std::endl;
+		x++;
+	};
+}
 
 int main() {
 	lzy::vector<int> vec;
@@ -10,7 +18,7 @@ int main() {
 		vec.push_back(i);
 	}
 
-	lzy::processing_time timer([&]() {
+	lzy::processing_time timer([&] {
 
 		vec.for_each([&](auto f) {
 			f += 10;
@@ -27,6 +35,12 @@ int main() {
 		});
 
 		n_vec.for_each([&](auto str) {
+			//std::cout << str << std::endl;
+		});
+
+		auto nn_vec = n_vec.deepCopy(n_vec.begin(), n_vec.end());
+
+		nn_vec.for_each([](auto str) {
 			std::cout << str << std::endl;
 		});
 
@@ -34,10 +48,17 @@ int main() {
 	timer.start();
 
 	std::cout << timer.getResult() << std::endl;
+/*
+	auto b = outer();
+	b();
+	b();
+	b();
 
-	
-	CommandLineWiz wiz("git add");
+	auto f = outer();
+	f();
+	f();
+	f();
+*/
 
-	std::cout << wiz.At(0) << std::endl;
 
 }
