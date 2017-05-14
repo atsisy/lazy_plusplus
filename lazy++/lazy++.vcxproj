@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="commandline_wiz.cpp" />
+    <ClCompile Include="lazy_function.cpp" />
     <ClCompile Include="lz_array.cpp" />
     <ClCompile Include="lz_vector.cpp" />
     <ClCompile Include="main.cpp" />
@@ -147,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cmdline_wiz.hpp" />
+    <ClInclude Include="lazy++.hpp" />
     <ClInclude Include="lazy_core.hpp" />
     <ClInclude Include="lzy_shorter.hpp" />
     <ClInclude Include="lz_array.hpp" />

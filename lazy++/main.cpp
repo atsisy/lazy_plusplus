@@ -1,7 +1,5 @@
 #include <iostream>
-#include "lz_vector.hpp"
-#include "p_time.hpp"
-#include "lzy_shorter.hpp"
+#include "lazy++.hpp"
 #include <string>
 
 fn<void()> outer() {
@@ -18,6 +16,8 @@ int main() {
 	for (int i = 0; i < 100; ++i) {
 		vec.push_back(i);
 	}
+
+	for_times(10, [](int count) {std::cout << count << std::endl; });
 
 	lzy::processing_time timer([&] {
 
