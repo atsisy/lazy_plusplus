@@ -143,12 +143,14 @@
     <ClCompile Include="lz_array.cpp" />
     <ClCompile Include="lz_vector.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="p_time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cmdline_wiz.hpp" />
     <ClInclude Include="lazy_core.hpp" />
     <ClInclude Include="lz_array.hpp" />
     <ClInclude Include="lz_vector.hpp" />
+    <ClInclude Include="p_time.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE.TXT" />

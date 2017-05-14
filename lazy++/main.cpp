@@ -2,6 +2,7 @@
 #include <chrono>
 #include "lz_vector.hpp"
 #include "cmdline_wiz.hpp"
+#include "p_time.hpp"
 
 int main() {
 	lzy::vector<int> vec;
@@ -9,22 +10,28 @@ int main() {
 		vec.push_back(i);
 	}
 
-	std::chrono::system_clock::time_point  start, end; // 型は auto で可
-	start = std::chrono::system_clock::now(); // 計測開始時間
+	lzy::processing_time timer([&]() {
 
-	vec.for_each([&](auto f) {
-		f += 10;
+		vec.for_each([&](auto f) {
+			f += 10;
+		});
+
+		vec.filter([&](int elem) {
+			return !(elem % 3);
+		}).for_each([&](int *elem) {
+			*elem = 0;
+		});
+
+		vec.for_each([&](auto elem) {
+			std::cout << elem << std::endl;
+		});
+
 	});
+	timer.start();
 
-	vec.filter([&](int elem) {
-		return !(elem % 3);
-	}).for_each([&](int *elem) {
-		std::cout << *elem << std::endl;
-	});
+	std::cout << timer.getResult() << std::endl;
 
-	end = std::chrono::system_clock::now();  // 計測終了時間
-	std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << std::endl; //処理に要した時間をミリ秒に変換
-
+	
 	CommandLineWiz wiz("git add");
 
 	std::cout << wiz.At(0) << std::endl;
