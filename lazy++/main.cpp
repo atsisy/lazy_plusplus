@@ -6,7 +6,7 @@ fn<void()> outer() {
 	static int x = 0;
 
 	return [&] { 
-		std::cout << x << std::endl;
+		print(x); ln();
 		x++;
 	};
 }
@@ -17,7 +17,7 @@ int main() {
 		vec.push_back(i);
 	}
 
-	for_times(10, [](int count) {std::cout << count << std::endl; });
+	for_times(10, [](int count) { print(count); ln(); });
 
 	lzy::processing_time timer([&] {
 
@@ -42,13 +42,16 @@ int main() {
 		auto nn_vec = n_vec.deepCopy(n_vec.begin(), n_vec.end());
 
 		nn_vec.for_each([](auto str) {
-			std::cout << str << std::endl;
+			print(str);
+			ln();
 		});
 
 	});
 	timer.start();
 
-	std::cout << timer.getResult() << std::endl;
+	print(timer.getResult());
+	ln();
+
 /*
 	auto b = outer();
 	b();
