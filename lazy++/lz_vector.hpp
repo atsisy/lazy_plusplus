@@ -5,7 +5,7 @@
 
 namespace lzy {
 
-	template <typename T> class vector : public std::vector<T>, public LZCORE<T> {
+	template <class T> class vector : public std::vector<T>, public LZCORE<T> {
 
 	public:
 		/*
@@ -44,6 +44,17 @@ namespace lzy {
 			});
 
 			return _filtering_vector;
+		}
+
+		template <class _mapTo_t>
+		vector<_mapTo_t> mapTo(std::function<_mapTo_t(T)> map_function) {
+			vector<_mapTo_t> _mapping_vector;
+
+			for_each([&](T & _element) {
+				_mapping_vector.push_back(map_function(_element));
+			});
+
+			return _mapping_vector;
 		}
 	};
 

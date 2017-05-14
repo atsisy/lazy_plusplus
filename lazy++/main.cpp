@@ -22,8 +22,12 @@ int main() {
 			*elem = 0;
 		});
 
-		vec.for_each([&](auto elem) {
-			std::cout << elem << std::endl;
+		auto n_vec = vec.mapTo<std::string>([&](auto elem) {
+			return std::to_string(elem);
+		});
+
+		n_vec.for_each([&](auto str) {
+			std::cout << str << std::endl;
 		});
 
 	});
