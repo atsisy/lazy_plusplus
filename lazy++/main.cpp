@@ -1,9 +1,10 @@
 #include <iostream>
 #include "lz_vector.hpp"
 #include "p_time.hpp"
+#include "lzy_shorter.hpp"
 #include <string>
 
-std::function<void(void)> outer() {
+fn<void()> outer() {
 	static int x = 0;
 
 	return [&] { 
@@ -13,7 +14,7 @@ std::function<void(void)> outer() {
 }
 
 int main() {
-	lzy::vector<int> vec;
+	lzyVec<int> vec;
 	for (int i = 0; i < 100; ++i) {
 		vec.push_back(i);
 	}

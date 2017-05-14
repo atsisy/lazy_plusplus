@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="cmdline_wiz.hpp" />
     <ClInclude Include="lazy_core.hpp" />
+    <ClInclude Include="lzy_shorter.hpp" />
     <ClInclude Include="lz_array.hpp" />
     <ClInclude Include="lz_vector.hpp" />
     <ClInclude Include="p_time.hpp" />
