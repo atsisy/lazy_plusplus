@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <functional>
 #include <vector>
 #include "lazy_core.hpp"
@@ -11,20 +11,20 @@ namespace lzy {
 	public:
 		typedef typename vector<T>::iterator iterator;
 		/*
-		* ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+		* ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		*/
 		vector(std::size_t size)
 			: std::vector<T>(size)
 		{
 			/*
-			*eƒNƒ‰ƒX‚ğ¶¬‚·‚é‚¾‚¯
+			*è¦ªã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã ã‘
 			*/
 		}
 
 		vector()
 		{
 			/*
-			*ƒIƒuƒWƒFƒNƒg¶¬‚Ì‚İ
+			*ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆã®ã¿
 			*/
 		}
 
@@ -35,12 +35,12 @@ namespace lzy {
 			}
 		}
 
-		vector<T *> filter(std::function<bool(T)> function) {
-			vector<T *> _filtering_vector;
+		vector<std::reference_wrapper<T>> filter(std::function<bool(T)> function) {
+			vector<std::reference_wrapper<T>> _filtering_vector;
 
 			for_each([&](T & element) {
 				if (function(element)) {
-					_filtering_vector.push_back(&element);
+					_filtering_vector.push_back(element);
 				}
 			});
 
